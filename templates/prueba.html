@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-VOY A APRENDER - VOY A APRENDER - VOY A APRENDER
 
+HOME <br/>
 
-<a href="{% url 'segunda_pantalla' %}">IR A LA PANTALLA 2</a>
+<a href="{% url 'productos:listar' %}">Listar Productos</a>
+<a href="{% url 'productos:cargar_p' %}">Cargar Productos</a>
+<a href="{% url 'productos:cargar_r' %}">Cargar Rubro</a>
 
 {% endblock content %}

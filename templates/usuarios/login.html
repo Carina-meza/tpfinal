@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>Iniciar Sesión</h1>
+    <div>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.errors}}
+            <input type="text" name="username" placeholder="Usuario"/>
+            <input type="password" name="password" placeholder="Password"/>
+            <input type="submit" name="" value="Enviar"/>
+        </form>
+    </div>
+
+{% endblock content %}

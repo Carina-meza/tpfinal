@@ -4,7 +4,14 @@
 	<title></title>
 </head>
 <body>
-	<div style="margin: 100px;"><h5>ENCABEZADO</h5></div>
+	<div style="margin: 100px;"><h5>ENCABEZADO</h5>
+    {% if user.is_authenticated %}
+        <span>Hola {{user.username}}</span>
+        <a href="{% url 'logout'%}">LOGOUT</a>
+    {% else %}
+        <a href="{% url 'login'%}">LOGIN</a>
+    {% endif %}
+    </div>
 
 	{% block content %}
 
