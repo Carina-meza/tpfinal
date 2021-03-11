@@ -5,3 +5,6 @@ def PRINCIPAL (request):
 
 def Segunda (request):
 	return render (request, 'segunda.html')
+
+def Pant (request):
+	return render (request, 'pantallita.html')

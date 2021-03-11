@@ -4,12 +4,18 @@
 	<title></title>
 </head>
 <body>
-	<div style="margin: 100px;"><h5>ENCABEZADO</h5>
+	<div style="margin: 100px;"><h5>BAKE SHOP</h5>
+    <h5>Bienvenidos a BAKE SHOP donde tus sueños dulces se hacen realidad</h5>
+
     {% if user.is_authenticated %}
         <span>Hola {{user.username}}</span>
         <a href="{% url 'logout'%}">LOGOUT</a>
     {% else %}
-        <a href="{% url 'login'%}">LOGIN</a>
+        <a href="{% url 'segunda_pantalla'%}">LOGIN </a><br>
+        <br><a href="{% url 'login'%}">Iniciar Sesion </a>
+        <br><a href="{% url 'otra_pantalla'%}">CONOCENOS </a>
+  
+
     {% endif %}
     </div>
 

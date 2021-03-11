@@ -21,12 +21,15 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('', views.PRINCIPAL, name = 'home'),
+    path('', views.PRINCIPAL, name = 'home'),    
     path('Pantalla2/', views.Segunda, name = 'segunda_pantalla'),
+    path('Pantalla/', views.Pant, name = 'otra_pantalla'),
 
     path('Productos/', include('apps.productos.urls')),
 
     path('Login/', auth.LoginView.as_view(template_name="usuarios/login.html"), name="login"),
     path('Logout/', auth.LogoutView.as_view(), name="logout")
+
 ]
 
+ 
