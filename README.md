@@ -1,22 +1,24 @@
-# tpfinal
-TP Final informatorio
+# TP Final informatorio
 
-#Load Virtual Environment
-source venv/Scripts/activate
+## Create Virtual Environment
+python -m venv .env
 
-#install requirements
+## Load Virtual Environment (deactivate to leave virtual env)
+source .env/Scripts/activate
+
+## Install requirements
 pip install django==3.0
 pip install django-mssql-backend
 pip install pillow
 
-#migrate DB (install mssql server and create DB TPFINAL)
+## Migrate DB (install mssql server and create DB TPFINAL)
 py manage.py migrate
 
-#create database scripts from python code
+## Create database scripts from python code
 py manage.py makemigrations
 
-#create super user
+## Create super user
 py manage.py createsuperuser 
 
-#run server
+## Run server
 py manage.py runserver
