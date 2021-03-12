@@ -1,10 +1,16 @@
 # TP Final informatorio
 
 ## Create Virtual Environment
+pip install virtualenv
+virtualenv .env
+### OR
 python -m venv .env
 
-## Load Virtual Environment (deactivate to leave virtual env)
+## Load Virtual Environment (bash)
 source .env/Scripts/activate
+### OR (cmd)
+.env\Scripts\activate
+## "deactivate" to leave virtual env
 
 ## Install requirements
 pip install django==3.0
