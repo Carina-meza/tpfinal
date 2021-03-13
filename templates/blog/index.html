@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>BAKE SHOP</h1>
+<p> Bienvenidos a la tienda donde tus sueños dulces se hacen realidad </p>
+
+
+<a href="{% url 'productos:listar' %}">Listar Productos</a>
+<a href="{% url 'productos:cargar_p' %}">Cargar Productos</a>
+<a href="{% url 'productos:cargar_r' %}">Cargar Rubro</a>
+
+{% endblock content %}

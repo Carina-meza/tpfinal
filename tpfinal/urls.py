@@ -20,8 +20,14 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    
+    path('', views.PRINCIPAL, name = 'home'),
+    path('blog/', include('apps.publicaciones.urls', namespace='publicaciones')),
 
-    path('', views.PRINCIPAL, name = 'home'),    
+
+
+
+
     path('Pantalla2/', views.Segunda, name = 'segunda_pantalla'),
     path('Pantalla/', views.Pant, name = 'otra_pantalla'),
 
