@@ -2,6 +2,13 @@
 
 {% block content %}
 
-...
+<h1>{{ publicacion.titulo }}</h1>
+
+
+
+<p><strong>Post date</strong> {{ publicacion.fecha_creacion }}</p>
+<p><strong>Author:</strong> <a>{{ publicacion.autor.descripcion }}</a></p>
+<p><strong>Description:</strong></p>
+<p style="white-space:pre-wrap;">{{ publicacion.contenido }}</p>
 
 {% endblock content %}
