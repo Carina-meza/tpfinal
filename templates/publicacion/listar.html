@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h3>Listar Productos</h3>
+    <div>
+        <p>-------------------</p>
+        {% for p in publicaciones %}
+            <p>{{p.titulo}}</p>
+            <p>{{p.subtitulo}}</p>
+            <p>{{p.contenido}}</p>
+            <p>{{p.categoria}}</p>
+            <p>{{p.fecha}}</p>
+            <p>-------------------</p>
+        {% endfor %}
+    </div>
+
+{% endblock content %}
