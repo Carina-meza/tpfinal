@@ -5,24 +5,61 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
     <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <div class="p-3 mb-2 bg-light text-dark">
+
     <title></title>
+
 </head>
 <body>
-<div class="container">
+<div class="container-fluid">
     <div style="margin: 100px;">
-    <h1>BAKE SHOP</h1>
-    </div>
-    
-    <h3>Bienvenidos a BAKE SHOP donde tus sueños dulces se hacen realidad</h3>
 
+<div class="container">
+  <div class="row">
+    <div class="col">
+      Conoce a nuestros emprendedores
+    </div>
+    <div class="col">
+      Categorias
+    </div>
+    <div class="col">
+      Contacto
+    </div>
+  </div>
+</div>    
+    <div align="center">
+<h1><p class="text-danger">BAKE SHOP</p></h1>
+
+    <div align="center">
+    <h4><p class="text-success">Bienvenidos a BAKE SHOP donde tus sueños dulces se hacen realidad<p></h4>
+
+    </div>
+    <div align="left">
+    <h5><p class="text-warning">LO NUEVO</p></h5>
+    <div class = "container">
+        <div class = "row">
+            <img src = "a9d.jpg" class = "ing-fluid">
+
+
+
+
+
+    </div>
+    <div align="left">
+    <h5><p class="text-warning">CATERING</p></h5>
+
+
+     <div align="left">
     {% if user.is_authenticated %}
         <span>Hola {{user.username}}</span>
         <a href="{% url 'logout'%}">LOGOUT</a>
     {% else %}
-        <a href="{% url 'segunda_pantalla'%}">LOGIN </a><br>
+        <br><a href="{% url 'segunda_pantalla'%}"> <br><br><h6>LOGIN</h6> </a><br>
         <br><a href="{% url 'login'%}">Iniciar Sesion </a><br>
         <br><a href="{% url 'otra_pantalla'%}">CONOCENOS </a>
   
+
 
     {% endif %}
     

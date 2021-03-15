@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+
+
 def PRINCIPAL (request):
 	return render (request, 'prueba.html')
 
@@ -8,3 +10,4 @@ def Segunda (request):
 
 def Pant (request):
 	return render (request, 'pantallita.html')
+
