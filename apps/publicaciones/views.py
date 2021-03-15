@@ -25,7 +25,6 @@ def Listar(request):
       'publicaciones': Publicacion.objects.all(),
    })
 
-
 def Prueba(request):
    return render(request, 'publicacion/prueba.html', {
       'personas': [

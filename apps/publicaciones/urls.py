@@ -9,5 +9,4 @@ urlpatterns = [
    path('nueva/', views.Alta_Publicacion.as_view(), name = 'alta_publicacion'),
    path('listar/', views.Listar, name = 'listar'),
    path('prueba/', views.Prueba, name = 'prueba'),
-
 ]

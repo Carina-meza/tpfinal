@@ -4,7 +4,6 @@ from django.urls import reverse_lazy
 from .models import Categoria
 from .forms import Formulario_Alta_Categoria
 
-
 # Create your views here.
 
 class Alta_Categoria(CreateView):

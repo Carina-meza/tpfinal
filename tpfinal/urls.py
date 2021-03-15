@@ -19,7 +19,6 @@ from django.contrib.auth import views as auth
 from apps.usuarios import views as usuarios_views
 from . import views
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     
@@ -28,20 +27,13 @@ urlpatterns = [
     path('categorias/', include('apps.categorias.urls')),
 
 
-
-
     path('Pantalla2/', views.Segunda, name = 'segunda_pantalla'),
     path('Pantalla/', views.Pant, name = 'otra_pantalla'),
-
-
-
     path('Productos/', include('apps.productos.urls')),
+
 
     path('registro/', usuarios_views.registro.as_view(), name='registro'),
     path('login/', auth.LoginView.as_view(template_name="usuarios/login.html"), name="login"),
     path('logout/', auth.LogoutView.as_view(), name="logout")
-
-
 ]
-
  
