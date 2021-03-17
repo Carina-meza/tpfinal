@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load tags %}
 <html>
   <head>
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
@@ -12,17 +13,17 @@
       <div class="container">
         <div class="row py-4">
           <div class="col-sm-3">
-            <a class="navbar-brand d-inline-block p-0" href="{% url 'home' %}" style="color: white;">
-              <h1 class="m-0">BAKE SHOP</h1>
+            <a href="{% url 'home' %}" class="navbar-brand d-inline-block p-0" style="color: white;">
+              <h1>BAKE SHOP</h1>
             </a>
           </div>
           <div class="col-sm-6 py-1">
             <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
+              <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
+              <button class="btn btn-outline-success" type="submit">Buscar</button>
             </form>
           </div>
-          <div class="col-sm-3">
+          <div class="col-sm-3 text-end">
             {% if user.is_authenticated %}
             <span>Hola {{user.username}}</span><br/>
             <a href="{% url 'logout'%}" style="color: white;">Cerrar sesión</a>
@@ -38,26 +39,18 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Inicio</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+              <li class="nav-item mx-auto">
+                <a class="nav-link" href="#">Conoce a nuestros emprendedores</a>
               </li>
-              <li class="nav-item dropdown">
+              <li class="nav-item dropdown ml-auto">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown
+                  Categorías
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                {% menu_categorias %}
               </li>
             </ul>
           </div>

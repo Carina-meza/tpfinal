@@ -1,0 +1,7 @@
+<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+	{% for c in categorias %}
+  		<li>
+  			<a class="dropdown-item" href="#{{c.id}}">{{c.nombre}}</a>
+  		</li>
+  	{% endfor %}
+</ul>
