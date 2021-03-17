@@ -14,7 +14,7 @@
       <div class="container">
         <div class="row py-4">
           <div class="col-sm-3">
-            <a href="{% url 'home' %}" class="navbar-brand d-inline-block p-0" style="color: white;">
+            <a href="{% url 'publicaciones:home' %}" class="navbar-brand d-inline-block p-0" style="color: white;">
               <h1>BAKE SHOP</h1>
             </a>
           </div>
@@ -27,9 +27,11 @@
           <div class="col-sm-3 text-end">
             {% if user.is_authenticated %}
             <span>Hola {{user.username}}</span><br/>
+            <a href="{% url 'publicaciones:nueva_publicacion'%}" style="color: white;">Nueva Publicación</a>
             <a href="{% url 'logout'%}" style="color: white;">Cerrar sesión</a>
             {% else %}
-            <a href="{% url 'login'%}" style="color: white;">Iniciar sesión/Registrarse </a>
+            <a href="{% url 'login'%}" style="color: white;">Iniciar sesión</a> / 
+            <a href="{% url 'registro'%}" style="color: white;">Registrarse</a>
             {% endif %}
           </div>
         </div>
@@ -42,7 +44,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Inicio</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'publicaciones:home' %}">Inicio</a>
               </li>
               <li class="nav-item mx-auto">
                 <a class="nav-link" href="#">Conoce a nuestros emprendedores</a>
@@ -59,7 +61,7 @@
       </nav>
     </header>
     <main>
-      <div class="container"> 
+      <div class="container py-5"> 
         {% block content %} {% endblock %}
       </div>
     </main>
@@ -67,21 +69,6 @@
       <div class="container">
         <div class="py-4">
           <h3>BAKE SHOP</h3>
-          <h5><a style="color: white;">LO NUEVO</a></h5>
-
-            <img src="{% static 'imagenes/torta3.png' %}" width="250" height="250" class = "imagen-izq">
-            <img src="{% static 'imagenes/torta2.png' %}" width="299" height="250" class="imagen-cen"> 
-            <img src="{% static 'imagenes/torta1.png' %}" width="300" height="250" class = "imagen-der">
-
-          <h5><a style="color: white;">CATERING</a></h5>
-
-          <img src="{% static 'imagenes/catering5.png' %}" width="300" height="350" class = "imagen-izq2">
-
-          <img src="{% static 'imagenes/catering1.png' %}" width="350" height="350" class = "imagen-cen2">
-
-          <img src="{% static 'imagenes/catering2.png' %}" width="250" height="250" class = "imagen-der2">
-
-
           <p>
             ¿Querés unirte a nuestra comunidad?
             <br>Ayudamos a potenciar tu marca
@@ -92,7 +79,6 @@
             <img src="{% static 'imagenes/instagram.png' %}" width="20" height="20">
             <img src="{% static 'imagenes/correo.png' %}" width="20" height="20">
           </p>
-
         </div>
         <div class="pb-5 text-center">
           Derechos Reservados 2021 © <strong>BAKE SHOP</strong>.

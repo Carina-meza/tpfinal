@@ -6,7 +6,7 @@ from ..usuarios.models import Usuario
 
 class Publicacion(models.Model):
     titulo = models.CharField(max_length = 1024)
-    subtitulo = models.CharField(max_length = 1024)
+    descripcion = models.CharField(max_length = 2000)
     contenido = models.TextField(max_length = 10000)
     imagen = models.ImageField(upload_to = 'publicaciones')
     categoria = models.ForeignKey(Categoria, on_delete = models.SET_NULL, blank=True, null=True)

@@ -17,22 +17,16 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth
 from apps.usuarios import views as usuarios_views
+from apps.publicaciones import views as publicaciones_views
 from django.conf.urls.static import static
 from django.conf import settings
 from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    
-    path('', views.PRINCIPAL, name = 'home'),
-    path('blog/', include('apps.publicaciones.urls')),
+
+    path('', include('apps.publicaciones.urls')),
     path('categorias/', include('apps.categorias.urls')),
-
-
-    path('Pantalla2/', views.Segunda, name = 'segunda_pantalla'),
-    path('Pantalla/', views.Pant, name = 'otra_pantalla'),
-    path('Productos/', include('apps.productos.urls')),
-
 
     path('registro/', usuarios_views.registro.as_view(), name='registro'),
     path('login/', auth.LoginView.as_view(template_name="usuarios/login.html"), name="login"),

@@ -16,6 +16,7 @@ source .env/Scripts/activate
 pip install django==3.0
 pip install django-mssql-backend
 pip install pillow
+pip install django-extensions
 
 ## Migrate DB (install mssql server and create DB TPFINAL)
 py manage.py migrate
