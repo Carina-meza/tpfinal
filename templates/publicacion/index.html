@@ -1,12 +1,23 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-<h1>BAKE SHOP</h1>
-<p> Bienvenidos a la tienda donde tus sueños dulces se hacen realidad </p>
+<h2 class="mb-5"><i>Bienvenidos a la tienda donde tus sueños dulces se hacen realidad</i></h2>
 
-
-<a href="{% url 'productos:listar' %}">Listar Productos</a>
-<a href="{% url 'productos:cargar_p' %}">Cargar Productos</a>
-<a href="{% url 'productos:cargar_r' %}">Cargar Rubro</a>
+{% for p in publicaciones %}
+    <div class="row mb-5">
+        <div class="col-md-3">
+            <img src="{{p.imagen.url}}" alt="{{p.titulo}}" style="width: 100%;" class="img-thumbnail" />
+        </div>
+        <div class="col-md-9">
+            <h3><a href="{% url 'publicaciones:ver' p.id %}">{{p.titulo}}</a></h3>
+            <dl>
+                <dt>{{p.categoria}}</dt>
+                <dd>{{p.autor.first_name}} {{p.autor.last_name}} - {{p.fecha}}</dd>
+            </dl>
+            <p>{{p.descripcion}}</p>
+        </div>
+    </div>
+{% endfor %}
 
 {% endblock content %}

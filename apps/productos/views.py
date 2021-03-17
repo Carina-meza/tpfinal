@@ -18,7 +18,7 @@ class Alta_Producto(LoginRequiredMixin, CreateView):
     model = 'Producto'
     form_class = Formulario_Alta_Producto
     template_name = 'productos/alta_producto.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('publicaciones:home')
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         test = ['hola', 'chau']
@@ -30,4 +30,4 @@ class Alta_Rubro(LoginRequiredMixin, CreateView):
     model = 'Rubro'
     form_class = Formulario_Alta_Rubro
     template_name = 'productos/alta_rubro.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('publicaciones:home')
