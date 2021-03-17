@@ -1,17 +1,23 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
+<h1>Filtrar</h1>
 
-    <h3>Listar Productos</h3>
-    <div>
-        <p>-------------------</p>
-        {% for p in publicaciones %}
-            <p>{{p.titulo}}</p>
-            <p>{{p.contenido}}</p>
-            <p>{{p.categoria}}</p>
-            <p>{{p.fecha}}</p>
-            <p>-------------------</p>
-        {% endfor %}
+{% for p in publicaciones %}
+    <div class="row mb-5">
+        <div class="col-md-3">
+            <img src="{{p.imagen.url}}" alt="{{p.titulo}}" style="width: 100%;" class="img-thumbnail" />
+        </div>
+        <div class="col-md-9">
+            <h3><a href="{% url 'publicaciones:ver' p.id %}">{{p.titulo}}</a></h3>
+            <dl>
+                <dt>{{p.categoria}}</dt>
+                <dd>{{p.autor.first_name}} {{p.autor.last_name}} - {{p.fecha}}</dd>
+            </dl>
+            <p>{{p.descripcion}}</p>
+        </div>
     </div>
+{% endfor %}
 
 {% endblock content %}

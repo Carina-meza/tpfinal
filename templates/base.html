@@ -19,8 +19,8 @@
             </a>
           </div>
           <div class="col-sm-6 py-1">
-            <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
+            <form action="{% url 'publicaciones:buscar' %}" class="d-flex">
+              <input class="form-control me-2" type="search" name="q" placeholder="Buscar" aria-label="Buscar">
               <button class="btn btn-outline-success" type="submit">Buscar</button>
             </form>
           </div>
