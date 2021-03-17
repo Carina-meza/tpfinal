@@ -7,6 +7,7 @@
     <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <title>Bake Shop</title>
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}"/>
   </head>
   <body>
     <header style="background-color: #9badea;color: rgb(255, 255, 255);">
@@ -67,11 +68,18 @@
         <div class="py-4">
           <h3>BAKE SHOP</h3>
           <h5><a style="color: white;">LO NUEVO</a></h5>
-            <p>
-            <img src= "https://escueladetartas.com/wp-content/uploads/2018/01/Tartas-de-letras-decoradas-6.png" width="25%"  class="rounded float-left"> 
-            <img src= "https://farm9.staticflickr.com/8483/8198061000_53838f65cb.jpg" width="35%" class="rounded float-center">
-            <img src = "https://atodofondant.com/wp-content/uploads/2019/07/SIN-COBERTURA-4.jpg" width="320" class= "rounded float-right">
 
+            <img src="{% static 'imagenes/torta3.png' %}" width="250" height="250" class = "imagen-izq">
+            <img src="{% static 'imagenes/torta2.png' %}" width="299" height="250" class="imagen-cen"> 
+            <img src="{% static 'imagenes/torta1.png' %}" width="300" height="250" class = "imagen-der">
+
+          <h5><a style="color: white;">CATERING</a></h5>
+
+          <img src="{% static 'imagenes/catering5.png' %}" width="300" height="350" class = "imagen-izq2">
+
+          <img src="{% static 'imagenes/catering1.png' %}" width="350" height="350" class = "imagen-cen2">
+
+          <img src="{% static 'imagenes/catering2.png' %}" width="250" height="250" class = "imagen-der2">
 
 
           <p>
