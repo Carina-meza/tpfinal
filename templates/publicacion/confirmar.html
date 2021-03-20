@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="border-bottom pb-2 mb-4">Eliminar publicación</h1>
+    <div>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %} 
+            <p>Está seguro que desea eliminar la publicación "{{ object }}"?</p> 
+            <div class="form-group mt-4">
+                <button class="btn btn-outline-info" type="submit">Confirmar</button>
+            </div>
+        </form> 
+    </div>
+{% endblock content %}

@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load bootstrap5 %}
 
 {% block content %}
 
@@ -15,10 +14,10 @@
 <div>
   <form action="{% url 'publicaciones:comentar' publicacion.id %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    {% bootstrap_form form %}
-    {% buttons %}
-      <button type="submit" class="btn btn-outline-info">Guardar</button>
-    {% endbuttons %}
+    <table> {{ form.as_table }} </table>
+    <div class="form-group mt-4">
+      <button class="btn btn-outline-info" type="submit">Guardar</button>
+    </div>
   </form>
 </div>
 

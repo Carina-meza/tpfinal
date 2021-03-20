@@ -1,7 +1,7 @@
 from django import forms
 from .models import Publicacion, Comentario
 
-class Formulario_Alta_Publicacion(forms.ModelForm):
+class Formulario_Publicacion(forms.ModelForm):
     class Meta:
         model = Publicacion
         exclude = ['autor']

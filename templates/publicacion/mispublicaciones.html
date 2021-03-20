@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h2 class="mb-5">Mis publicaciones</h2>
+
+{% for p in publicaciones %}
+    <div class="row mb-5">
+        <div class="col-md-3">
+            <img src="{{p.imagen.url}}" alt="{{p.titulo}}" style="width: 100%;" class="img-thumbnail" />
+        </div>
+        <div class="col-md-9">
+            <a href="{% url 'publicaciones:ver' p.id %}" class="d-inline-block"><h3>{{p.titulo}}</h3></a> 
+            <a href="{% url 'publicaciones:editar_publicacion' p.id %}">[Editar]</a>
+            <a href="{% url 'publicaciones:eliminar_publicacion' p.id %}">[Eliminar]</a>
+            <dl>
+                <dt>{{p.categoria}}</dt>
+                <dd>{{p.autor.first_name}} {{p.autor.last_name}} - {{p.fecha}}</dd>
+            </dl>
+            <p>{{p.descripcion}}</p>
+        </div>
+    </div>
+{% endfor %}
+
+{% endblock content %}
