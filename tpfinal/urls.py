@@ -26,10 +26,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('', include('apps.publicaciones.urls')),
-
+    
+    path('registro2/', usuarios_views.registro2.as_view(), name='registrodos'),
     path('registro/', usuarios_views.registro.as_view(), name='registro'),
     path('login/', auth.LoginView.as_view(template_name="usuarios/login.html"), name="login"),
     path('logout/', auth.LogoutView.as_view(), name="logout")
+
 ]
 
 if settings.DEBUG:
