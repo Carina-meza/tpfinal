@@ -4,7 +4,7 @@
 <html>
   <head>
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
-    <!--<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>-->
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <title>Bake Shop</title>
     <link rel="stylesheet" href="{% static 'css/estilos.css' %}"/>
@@ -26,9 +26,24 @@
           </div>
           <div class="col-sm-3 text-end">
             {% if user.is_authenticated %}
-            <span>Hola {{user.username}}</span><br/>
-            <a href="{% url 'publicaciones:nueva_publicacion'%}" style="color: white;">Nueva Publicación</a>
-            <a href="{% url 'logout'%}" style="color: white;">Cerrar sesión</a>
+            <div class="nav-item dropdown ml-auto">
+              <div class="d-inline-block">
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white;">
+                  <span>Hola {{user.username}}</span>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                  <li>
+                    <a class="dropdown-item" href="{% url 'publicaciones:nueva_publicacion'%}">Nueva Publicación</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="{% url 'pefil'%}">Pefil</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="{% url 'logout'%}">Cerrar sesión</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
             {% else %}
             <a href="{% url 'login'%}" style="color: white;">Iniciar sesión</a> / 
             <a href="{% url 'registro'%}" style="color: white;">Registrarse</a>
