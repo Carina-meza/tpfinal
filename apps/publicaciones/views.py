@@ -1,19 +1,14 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, FormView
 from django.db.models import Q
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
+from django.contrib.auth.mixins import LoginRequiredMixin
 from apps.categorias.models import Categoria
-from .models import Publicacion
-from .forms import Formulario_Alta_Publicacion
-
+from .models import Publicacion, Comentario
+from .forms import Formulario_Alta_Publicacion, Formulario_Nuevo_Comentario
 
 # Create your views here.
-
-'''def index(request):
-   return render(request, 'publicacion/index.html', {
-      'publicaciones': Publicacion.objects.all(),
-   })'''
 
 class IndexListView(ListView):
     model = Publicacion
@@ -45,11 +40,27 @@ class PubCatListView(ListView):
 class PublicacionesDetailView(DetailView):
    model = Publicacion
    template_name = 'publicacion/ver.html'
+   form_class = Formulario_Nuevo_Comentario
+   def get_context_data(self, **kwargs):
+      context = super().get_context_data(**kwargs)
+      context.update({
+         'form': self.form_class(instance=self.object),
+         'comentarios': Comentario.objects.filter(publicacion=context['publicacion']),
+      })
+      return context
 
-class Nueva_Publicacion(CreateView):
+class Nueva_Publicacion(LoginRequiredMixin, CreateView):
    form_class = Formulario_Alta_Publicacion
    template_name = 'publicacion/nueva.html'
    success_url = reverse_lazy('publicaciones:home')
    def form_valid(self, form):
         form.instance.autor = self.request.user
         return super().form_valid(form)
+
+class Nuevo_Comentario(FormView):
+   form_class = Formulario_Nuevo_Comentario
+   success_url = reverse_lazy('publicaciones:home')
+   def form_valid(self, form):
+      form.instance.publicacion = get_object_or_404(Publicacion, id=self.kwargs['pk'])
+      form.instance.usuario = self.request.user
+      return super().form_valid(form)

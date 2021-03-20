@@ -1,8 +1,12 @@
 from django import forms
-from .models import Publicacion
+from .models import Publicacion, Comentario
 
 class Formulario_Alta_Publicacion(forms.ModelForm):
     class Meta:
         model = Publicacion
-        #fields = ['titulo', 'contenido', 'imagen', 'categoria']
         exclude = ['autor']
+
+class Formulario_Nuevo_Comentario(forms.ModelForm):
+    class Meta:
+        model = Comentario
+        fields = ['contenido']
