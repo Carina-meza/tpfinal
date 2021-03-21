@@ -10,3 +10,7 @@ class Formulario_Nuevo_Comentario(forms.ModelForm):
     class Meta:
         model = Comentario
         fields = ['contenido']
+        labels = {'contenido': 'Comentario'}
+        widgets = {
+            'contenido': forms.Textarea(attrs={'class': 'form-control'})
+        }

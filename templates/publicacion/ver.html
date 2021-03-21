@@ -10,13 +10,13 @@
 </dl>
 <p>{{publicacion.descripcion}}</p>
 <p>{{publicacion.contenido}}</p>
-
 <div>
   <hr/>
   <h4>Comentarios</h4>
   <div class="comments-list">
     {% for c in comentarios %}
       <div class="media">
+        <hr/>
         <p class="pull-right"><small>{{c.fecha}}</small></p>
         <a class="media-left" href="#">
           <img src="{{c.usuario.imagen.url}}" alt="{{c.usuario.username}}" style="width: 50px;height: 50px;" class="img-thumbnail" />
@@ -28,6 +28,7 @@
       </div>
     {% endfor %}
   </div>
+  {% if user.is_authenticated %}
   <hr/>
   <form action="{% url 'publicaciones:comentar' publicacion.id %}" method="POST" enctype="multipart/form-data" autocomplete="off">
     {% csrf_token %}
@@ -36,6 +37,6 @@
       <button class="btn btn-outline-info" type="submit">Comentar</button>
     </div>
   </form>
+  {% endif %}
 </div>
-
 {% endblock content %}

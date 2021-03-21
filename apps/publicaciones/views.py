@@ -40,11 +40,10 @@ class PubCatListView(ListView):
 class PublicacionesDetailView(DetailView):
    model = Publicacion
    template_name = 'publicacion/ver.html'
-   form_class = Formulario_Nuevo_Comentario
    def get_context_data(self, **kwargs):
       context = super().get_context_data(**kwargs)
       context.update({
-         'form': self.form_class(instance=self.object),
+         'form': Formulario_Nuevo_Comentario(),
          'comentarios': Comentario.objects.filter(publicacion=context['publicacion']),
       })
       return context
