@@ -12,11 +12,28 @@
 <p>{{publicacion.contenido}}</p>
 
 <div>
-  <form action="{% url 'publicaciones:comentar' publicacion.id %}" method="POST" enctype="multipart/form-data">
+  <hr/>
+  <h4>Comentarios</h4>
+  <div class="comments-list">
+    {% for c in comentarios %}
+      <div class="media">
+        <p class="pull-right"><small>{{c.fecha}}</small></p>
+        <a class="media-left" href="#">
+          <img src="{{c.usuario.imagen.url}}" alt="{{c.usuario.username}}" style="width: 50px;height: 50px;" class="img-thumbnail" />
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading user_name">{{c.usuario.first_name}} {{c.usuario.last_name}}</h4>
+          {{c.contenido}}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <hr/>
+  <form action="{% url 'publicaciones:comentar' publicacion.id %}" method="POST" enctype="multipart/form-data" autocomplete="off">
     {% csrf_token %}
-    <table> {{ form.as_table }} </table>
+    <table> {{ form.as_p }} </table>
     <div class="form-group mt-4">
-      <button class="btn btn-outline-info" type="submit">Guardar</button>
+      <button class="btn btn-outline-info" type="submit">Comentar</button>
     </div>
   </form>
 </div>

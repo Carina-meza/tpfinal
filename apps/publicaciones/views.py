@@ -75,9 +75,10 @@ class Mis_Publicaciones(ListView):
    context_object_name = 'publicaciones'
    template_name = 'publicacion/mispublicaciones.html'
 
-class Nuevo_Comentario(FormView):
+class Nuevo_Comentario(CreateView):
    form_class = Formulario_Nuevo_Comentario
-   success_url = reverse_lazy('publicaciones:home')
+   def get_success_url(self):
+      return reverse_lazy('publicaciones:ver', kwargs={'pk': self.kwargs['pk']})
    def form_valid(self, form):
       form.instance.publicacion = get_object_or_404(Publicacion, id=self.kwargs['pk'])
       form.instance.usuario = self.request.user

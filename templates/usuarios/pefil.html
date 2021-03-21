@@ -2,7 +2,7 @@
 {% block content %}
     <h1 class="border-bottom pb-2 mb-4">Personaliza tu perfil</h1>
     <div>
-        <form method="POST">
+        <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <table> {{ form.as_table}} </table>
             <div class="form-group mt-4">
