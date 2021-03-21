@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% for u in usuarios %}
+    <div class="row mb-5">
+        <div class="col-md-3">
+            <img src="{{u.imagen.url}}" style="width: 100%;" class="img-thumbnail" />
+        </div>
+        <div class="col-md-9">
+            <h3><a>{{u.titulo}}</a></h3>
+            <p>
+            Nombre y apellido: {{u.first_name}} {{u.last_name}}
+            <br>Profesión: {{u.profesion}}
+            <br>Teléfono: {{u.telefono}}
+            <br>Email: {{u.email}}
+            <br>Descripción: {{u.descripcion}}
+            <p>
+        </div>
+    </div>
+{% endfor %}
+
+{% endblock content %}

@@ -26,6 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('', include('apps.publicaciones.urls')),
+    path('', include('apps.usuarios.urls')),
     
     path('pefil/', usuarios_views.pefil.as_view(), name='pefil'),
     path('registro/', usuarios_views.registro.as_view(), name='registro'),
