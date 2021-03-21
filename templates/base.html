@@ -70,6 +70,21 @@
               <li class="nav-item dropdown ml-auto">
                 {% menu_categorias %}
               </li>
+              {% if request.resolver_match.url_name in 'home,buscar,publicaciones_categoria,mis_publicaciones' %}
+              <li class="nav-item dropdown ml-auto">
+                <a class="nav-link dropdown-toggle" href="#" id="ordenDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Ordenar
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="ordenDropdown">
+                  <li>
+                    <a class="dropdown-item" href="?{% url_replace request 'orden' 'desc' %}">Más nuevos primero</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="?{% url_replace request 'orden' 'asc' %}">Más viejos primero</a>
+                  </li>
+                </ul>
+              </li>
+              {% endif %}
             </ul>
           </div>
         </div>

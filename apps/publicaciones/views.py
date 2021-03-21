@@ -11,7 +11,16 @@ from .forms import Formulario_Publicacion, Formulario_Nuevo_Comentario, Formular
 # Create your views here.
 
 class IndexListView(ListView):
-   model = Publicacion
+   def get_queryset(self):
+      if self.request.method == 'GET':
+         orden = self.request.GET.get('orden', None)
+         queryset = Publicacion.objects.all().order_by('-fecha')
+         if orden is not None and orden != '':
+            order_by = 'fecha'
+            if orden == 'desc':
+               order_by = '-' + order_by
+            queryset = queryset.order_by(order_by)
+         return queryset
    context_object_name = 'publicaciones'
    template_name = 'publicacion/index.html'
 
@@ -21,7 +30,8 @@ class BuscarListView(ListView):
          query = self.request.GET.get('q', None)
          desde = self.request.GET.get('desde', None)
          hasta = self.request.GET.get('hasta', None)
-         queryset = Publicacion.objects.all()
+         orden = self.request.GET.get('orden', None)
+         queryset = Publicacion.objects.all().order_by('-fecha')
          if query is not None and query != '':
             queryset = queryset.filter(
                Q(titulo__icontains = query) |
@@ -32,6 +42,11 @@ class BuscarListView(ListView):
             queryset = queryset.filter(fecha__gte = desde)
          if hasta is not None and hasta != '':
             queryset = queryset.filter(fecha__lte = hasta)
+         if orden is not None and orden != '':
+            order_by = 'fecha'
+            if orden == 'desc':
+               order_by = '-' + order_by
+            queryset = queryset.order_by(order_by)
          return queryset
    def get_context_data(self, **kwargs):
       context = super().get_context_data(**kwargs)
@@ -44,8 +59,15 @@ class BuscarListView(ListView):
 
 class PubCatListView(ListView):
    def get_queryset(self):
+      orden = self.request.GET.get('orden', None)
       self.categoria = get_object_or_404(Categoria, id=self.kwargs['pk'])
-      return Publicacion.objects.filter(categoria=self.categoria)
+      queryset = Publicacion.objects.filter(categoria=self.categoria).order_by('-fecha')
+      if orden is not None and orden != '':
+         order_by = 'fecha'
+         if orden == 'desc':
+            order_by = '-' + order_by
+         queryset = queryset.order_by(order_by)
+      return queryset
    context_object_name = 'publicaciones'
    template_name = 'publicacion/listar.html'
 
@@ -82,7 +104,14 @@ class Eliminar_Publicacion(DeleteView):
 
 class Mis_Publicaciones(ListView):
    def get_queryset(self):
-      return Publicacion.objects.filter(autor=self.request.user)
+      orden = self.request.GET.get('orden', None)
+      queryset = Publicacion.objects.filter(autor=self.request.user).order_by('-fecha')
+      if orden is not None and orden != '':
+         order_by = 'fecha'
+         if orden == 'desc':
+            order_by = '-' + order_by
+         queryset = queryset.order_by(order_by)
+      return queryset
    context_object_name = 'publicaciones'
    template_name = 'publicacion/mispublicaciones.html'
 
