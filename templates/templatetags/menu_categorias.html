@@ -1,4 +1,7 @@
-<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+<a class="nav-link dropdown-toggle" href="#" id="categoriaDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Categorías
+</a>
+<ul class="dropdown-menu" aria-labelledby="categoriaDropdown">
     {% for c in categorias %}
         <li>
             <a class="dropdown-item" href="{% url 'publicaciones:publicaciones_categoria' c.id %}">{{c.nombre}}</a>

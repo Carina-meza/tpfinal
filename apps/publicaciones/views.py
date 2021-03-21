@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from apps.categorias.models import Categoria
 from .models import Publicacion, Comentario
-from .forms import Formulario_Publicacion, Formulario_Nuevo_Comentario
+from .forms import Formulario_Publicacion, Formulario_Nuevo_Comentario, Formulario_Buscar
 
 # Create your views here.
 
@@ -18,17 +18,29 @@ class IndexListView(ListView):
 class BuscarListView(ListView):
    def get_queryset(self):
       if self.request.method == 'GET':
-         queryset = Publicacion.objects.all()
          query = self.request.GET.get('q', None)
+         desde = self.request.GET.get('desde', None)
+         hasta = self.request.GET.get('hasta', None)
+         queryset = Publicacion.objects.all()
          if query is not None and query != '':
             queryset = queryset.filter(
                Q(titulo__icontains = query) |
                Q(descripcion__icontains = query) |
                Q(contenido__icontains = query)
             )
+         if desde is not None and desde != '':
+            queryset = queryset.filter(fecha__gte = desde)
+         if hasta is not None and hasta != '':
+            queryset = queryset.filter(fecha__lte = hasta)
          return queryset
+   def get_context_data(self, **kwargs):
+      context = super().get_context_data(**kwargs)
+      context.update({
+         'form': Formulario_Buscar(self.request.GET),
+      })
+      return context
    context_object_name = 'publicaciones'
-   template_name = 'publicacion/listar.html'
+   template_name = 'publicacion/buscar.html'
 
 class PubCatListView(ListView):
    def get_queryset(self):

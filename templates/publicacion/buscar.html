@@ -2,7 +2,16 @@
 {% load static %}
 
 {% block content %}
-<h1>Publicaciones</h1>
+<h1>Buscar</h1>
+
+<form action="{% url 'publicaciones:buscar' %}" method="GET" enctype="multipart/form-data" autocomplete="off">
+    {{ form.as_p }}
+    <div class="form-group mt-4">
+        <button class="btn btn-outline-info" type="submit">Buscar</button>
+    </div>
+</form>
+
+<hr/>
 
 {% for p in publicaciones %}
     <div class="row mb-5">
