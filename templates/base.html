@@ -6,7 +6,6 @@
     <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <title>Bake Shop</title>
-    <link rel="stylesheet" href="{% static 'css/estilos.css' %}"/>
   </head>
   <body>
     <header style="background-color: #9badea;color: rgb(255, 255, 255);">
@@ -38,18 +37,18 @@
                     <a class="dropdown-item" href="{% url 'publicaciones:mis_publicaciones'%}">Mis Publicaciones</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="{% url 'pefil'%}">Pefil</a>
+                    <a class="dropdown-item" href="{% url 'usuarios:perfil'%}">Perfil</a>
                   </li>
                   <li><hr class="dropdown-divider"></li>
                   <li>
-                    <a class="dropdown-item" href="{% url 'logout'%}">Cerrar sesión</a>
+                    <a class="dropdown-item" href="{% url 'usuarios:logout'%}">Cerrar sesión</a>
                   </li>
                 </ul>
               </div>
             </div>
             {% else %}
-            <a href="{% url 'login'%}" style="color: white;">Iniciar sesión</a> / 
-            <a href="{% url 'registro'%}" style="color: white;">Registrarse</a>
+            <a href="{% url 'usuarios:login'%}" style="color: white;">Iniciar sesión</a> / 
+            <a href="{% url 'usuarios:registro'%}" style="color: white;">Registrarse</a>
             {% endif %}
           </div>
         </div>

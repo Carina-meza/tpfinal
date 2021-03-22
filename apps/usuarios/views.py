@@ -9,11 +9,11 @@ from .models import Usuario
 class registro(CreateView):
     form_class = RegistroUsuarioForm
     template_name = 'usuarios/registro.html'
-    success_url = reverse_lazy('login')
+    success_url = reverse_lazy('usuarios:login')
 
-class pefil(UpdateView):
+class perfil(UpdateView):
     form_class = PerfilUsuarioForm
-    template_name = 'usuarios/pefil.html'
+    template_name = 'usuarios/perfil.html'
     success_url = reverse_lazy('publicaciones:home')
     def get_object(self, queryset=None):
         return self.request.user

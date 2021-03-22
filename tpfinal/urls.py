@@ -15,9 +15,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.contrib.auth import views as auth
-from apps.usuarios import views as usuarios_views
-from apps.publicaciones import views as publicaciones_views
 from django.conf.urls.static import static
 from django.conf import settings
 from . import views
@@ -27,12 +24,6 @@ urlpatterns = [
 
     path('', include('apps.publicaciones.urls')),
     path('', include('apps.usuarios.urls')),
-    
-    path('pefil/', usuarios_views.pefil.as_view(), name='pefil'),
-    path('registro/', usuarios_views.registro.as_view(), name='registro'),
-    path('login/', auth.LoginView.as_view(template_name="usuarios/login.html"), name="login"),
-    path('logout/', auth.LogoutView.as_view(), name="logout")
-
 ]
 
 if settings.DEBUG:

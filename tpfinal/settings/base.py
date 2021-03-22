@@ -28,8 +28,8 @@ ALLOWED_HOSTS = []
 AUTH_USER_MODEL = 'usuarios.Usuario'
 
 LOGIN_REDIRECT_URL = reverse_lazy('publicaciones:home')
-LOGOUT_REDIRECT_URL = reverse_lazy('login')
-LOGIN_URL = reverse_lazy('login')
+LOGOUT_REDIRECT_URL = reverse_lazy('usuarios:login')
+LOGIN_URL = reverse_lazy('usuarios:login')
 
 # Application definition
 
